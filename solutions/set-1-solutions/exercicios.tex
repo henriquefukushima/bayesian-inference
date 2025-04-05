@@ -1,0 +1,63 @@
+\section{Exercícios}
+
+\subsection*{(Exercício 4)}
+
+\subsubsection*{a) $P(\theta=k\;|\;X=3)$}
+
+$$P(\theta=k\;|\;X=3) = \cfrac{P(X=3 \;|\; \theta=k) \cdot P(\theta=k)}{\sum_{j=2}^5 P(X=3 \;|\; \theta=j) \cdot P(\theta=j)}$$
+
+A priori é uniforme sobre o espaço paramétrico e vale $P(\theta=k) = 1/4$. A marginal é constante independente do caso, então vamos calculá-la primeiro.
+
+$$\sum_{j=2}^5 P(X=3 \;|\; \theta=j) \cdot P(\theta=j) = \cfrac{1}{4}\cdot\left(\cfrac{1}{3} +\cfrac{1}{4}+ \cfrac{1}{5} \right) = \cfrac{47}{60}$$
+
+Agora, vamos calcular caso a caso.
+
+\begin{align*}
+    &\theta = 2 \implies P(X=3\;|\;\theta=2) = 0 \implies P(\theta=2\;|\;X=3) = 0\\
+    &\theta = 3 \implies P(X=3\;|\;\theta=3) = 1/3 \implies P(\theta=3\;|\;X=3) = \frac{(1/3)\cdot (1/4)}{47/60} = \frac{5}{47}\\
+    &\theta = 4 \implies P(X=4\;|\;\theta=4) = 1/4 \implies P(\theta=4\;|\;X=3) = \frac{(1/4)\cdot (1/4)}{47/60} = \frac{3.75}{47}\\
+    &\theta = 5 \implies P(X=5\;|\;\theta=5) = 1/5 \implies P(\theta=5\;|\;X=3) = \frac{(1/5)\cdot (1/4)}{47/60} = \frac{3}{47}
+\end{align*}
+
+\subsubsection*{b) $P(\theta=k\;|\;X=5)$}
+
+Este caso é trivial. Temos certeza de que $\theta = 5$.
+
+\begin{align*}
+    &\theta = 2 \implies P(X=5\;|\;\theta=2) = 0 \implies P(\theta=2\;|\;X=5) = 0\\
+    &\theta = 3 \implies P(X=5\;|\;\theta=3) = 0 \implies P(\theta=3\;|\;X=5) = 0 \\
+    &\theta = 4 \implies P(X=5\;|\;\theta=4) = 0 \implies P(\theta=4\;|\;X=5) = 0\\
+    &\theta = 5 \implies P(X=5\;|\;\theta=5) = 1 \implies P(\theta=5\;|\;X=5) = 1\\ 
+\end{align*}
+
+
+\subsection*{(Exercício 10)} Considere \( \Theta = \mathbb{N} = \{0, 1, 2, \dots\} \). Suponha que \( X \), dado \( \theta = i \), seja uniformemente distribuído no conjunto \( \{i, i+1, i+2\} \). Suponha, a priori, que \( \theta \sim \text{Poisson}(\lambda_0) \), com \( \lambda_0 > 0 \). Obtenha a distribuição a posteriori de \( \theta \) dado \( X = x \), com \( x = 0, 1, 2, \dots \).\\
+
+\textit{Solução: } Pelo enunciado, sabemos que a verossimilhança segue o modelo uniforme sobre o conjunto $\{i, i+1, i+2\}$.
+
+\[
+P(X=x\;|\; \theta=i) = 
+\begin{cases}
+\frac{1}{3}, & \text{se } x \in \{i, i+1, i+2\} \\
+0, & \text{caso contrário}
+\end{cases}
+\]\\
+
+Ainda, o enunciado nos informa sobre o modelo de distribuição a priori (\textit{Poisson}):
+
+$$P(\theta=i) = \cfrac{e^{-\lambda_0} \lambda_0^i}{i!} \qquad i=0, 1 ,2,...$$
+
+Com isso, temos que a posteriori, para $x \in \{i, i+1, i+2\}$, vale:
+
+$$P(X=x\;|\; \theta =i) = \cfrac{(1/3)\cdot \frac{e^{-\lambda_0} \lambda_0^i}{i!}}{\sum_{j=x-2}^x \;(1/3)\cdot \frac{e^{-\lambda_0} \lambda_0^j}{j!}} = \cfrac{\frac{\lambda_0^i}{i!}}{\sum_{j=x-2}^x \; \frac{\lambda_0^j}{j!}}$$
+
+Finalmente, para $\forall \; x\in\mathbb{N}$
+\[
+P(\theta=i\;|\; X=x) =
+\begin{cases}
+     \cfrac{\frac{\lambda_0^i}{i!}}{\sum_{j=x-2}^x \; \frac{\lambda_0^j}{j!}}, &\text{se  }x \in \{i, i+1, i+2\}\\
+     0, &\text{caso contrário }
+\end{cases}
+\]
+
+
